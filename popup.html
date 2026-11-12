@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Konser Modu</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="top">
+      <div class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor"
+             stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M11 5 6 9H2v6h4l5 4V5Z" />
+          <path d="M15.5 8.5a5 5 0 0 1 0 7" />
+          <path d="M18.5 5.5a9 9 0 0 1 0 13" />
+        </svg>
+      </div>
+      <div class="brand">
+        <h1>Konser Modu</h1>
+        <p>Sekme sesine salon yankısı</p>
+      </div>
+      <button id="power" class="power" type="button" role="switch" aria-checked="false"
+              aria-label="Konser modunu aç/kapat" disabled>
+        <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor"
+             stroke-width="2" stroke-linecap="round">
+          <path d="M12 3v9" />
+          <path d="M6.3 6.3a8 8 0 1 0 11.4 0" />
+        </svg>
+      </button>
+    </header>
+
+    <section class="status" id="status" aria-live="polite">
+      <div class="status-main">
+        <div class="orb" aria-hidden="true">
+          <span class="orb-ring ring-1"></span>
+          <span class="orb-ring ring-2"></span>
+          <span class="orb-core">
+            <svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor"
+                 stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M11 5 6 9H2v6h4l5 4V5Z" />
+              <path d="M15.5 8.5a5 5 0 0 1 0 7" />
+              <path d="M18.5 5.5a9 9 0 0 1 0 13" />
+            </svg>
+          </span>
+        </div>
+        <div class="status-copy">
+          <span class="kicker" id="kicker">HAZIR</span>
+          <h2 id="status-title">Konser modu kapalı</h2>
+          <p id="status-sub">Sesinize salon derinliği katın.</p>
+        </div>
+      </div>
+
+      <div class="target">
+        <span class="target-favicon" aria-hidden="true">
+          <img id="target-img" alt="" hidden />
+          <span id="target-initial">?</span>
+        </span>
+        <div class="target-text">
+          <span class="target-label" id="target-label">BU SEKME</span>
+          <span class="target-title" id="target-title">Yükleniyor…</span>
+        </div>
+        <span class="live-dot" aria-hidden="true"></span>
+        <button id="stop" class="stop" type="button" title="Konser modunu durdur"
+                aria-label="Konser modunu durdur" hidden>
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor"
+               stroke-width="2.2" stroke-linecap="round">
+            <path d="M6 6l12 12M18 6 6 18" />
+          </svg>
+        </button>
+      </div>
+    </section>
+
+    <section class="panel" aria-labelledby="intensity-label">
+      <div class="panel-top">
+        <label id="intensity-label" for="intensity">Yankı yoğunluğu</label>
+        <output id="intensity-value" for="intensity">70%</output>
+      </div>
+      <input id="intensity" type="range" min="0" max="100" step="1" value="70"
+             aria-label="Yankı yoğunluğu" />
+      <div class="scale" aria-hidden="true">
+        <span>Kuru</span>
+        <span>Dengeli</span>
+        <span>Sarıcı</span>
+      </div>
+    </section>
+
+    <section class="panel presets-panel" aria-labelledby="preset-heading">
+      <div class="panel-top">
+        <span id="preset-heading">Mekân</span>
+        <span class="preset-meta" id="preset-meta">≈ 2,9 sn yankı</span>
+      </div>
+      <div class="presets" role="radiogroup" aria-labelledby="preset-heading">
+        <button class="preset" type="button" data-preset="hall" role="radio" aria-checked="true">
+          <span class="preset-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor"
+                 stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 21V11a8 8 0 0 1 16 0v10" />
+              <path d="M8 21v-9a4 4 0 0 1 8 0v9" />
+              <path d="M2 21h20" />
+            </svg>
+          </span>
+          <span class="preset-name">Konser Salonu</span>
+          <span class="preset-desc">Geniş, sıcak</span>
+        </button>
+        <button class="preset" type="button" data-preset="stadium" role="radio" aria-checked="false">
+          <span class="preset-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor"
+                 stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <ellipse cx="12" cy="12" rx="9" ry="6" />
+              <ellipse cx="12" cy="12" rx="5" ry="3.1" />
+              <path d="M3 12h3M18 12h3" />
+            </svg>
+          </span>
+          <span class="preset-name">Stadyum</span>
+          <span class="preset-desc">Uzun, güçlü</span>
+        </button>
+        <button class="preset" type="button" data-preset="stage" role="radio" aria-checked="false">
+          <span class="preset-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor"
+                 stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 4c2.6 4.6 2.6 11.4 0 16" />
+              <path d="M9.3 4c1.8 4.6 1.8 11.4 0 16" />
+              <path d="M14.7 4c-1.8 4.6-1.8 11.4 0 16" />
+              <path d="M20 4c-2.6 4.6-2.6 11.4 0 16" />
+              <path d="M2 20h20" />
+            </svg>
+          </span>
+          <span class="preset-name">Küçük Sahne</span>
+          <span class="preset-desc">Kısa, samimi</span>
+        </button>
+      </div>
+    </section>
+
+    <div class="notice" id="notice" role="alert" hidden>
+      <svg class="notice-icon" viewBox="0 0 24 24" width="15" height="15" fill="none"
+           stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+           aria-hidden="true">
+        <path d="M12 9v4" />
+        <path d="M12 17h.01" />
+        <path d="M10.3 3.9 2.6 17.1A2 2 0 0 0 4.3 20h15.4a2 2 0 0 0 1.7-2.9L13.7 3.9a2 2 0 0 0-3.4 0Z" />
+      </svg>
+      <p id="notice-text"></p>
+      <button id="notice-close" class="notice-close" type="button" aria-label="Uyarıyı kapat">×</button>
+    </div>
+
+    <button id="move" class="move" type="button" hidden>
+      <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor"
+           stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M4 12h12" />
+        <path d="m12 6 6 6-6 6" />
+      </svg>
+      <span>Efekti bu sekmeye taşı</span>
+    </button>
+
+    <footer class="footer">
+      <span class="privacy">
+        <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor"
+             stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M12 2 4 6v6c0 5 3.4 8.6 8 10 4.6-1.4 8-5 8-10V6l-8-4Z" />
+        </svg>
+        Kayıt yok · yalnızca bu cihazda
+      </span>
+      <span class="shortcut" title="Klavye kısayolu">
+        <kbd>Alt</kbd><kbd>Shift</kbd><kbd>C</kbd>
+      </span>
+    </footer>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
