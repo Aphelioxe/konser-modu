@@ -41,7 +41,7 @@ Bu eklenti aynı prensibi Web Audio API ile taklit eder:
 1. Chrome'da `chrome://extensions` adresini açın.
 2. Sağ üstten **Geliştirici modu**nu açın.
 3. **Paketlenmemiş öğe yükle** düğmesine tıklayın.
-4. Bu eklentinin klasörünü seçin: `Projeler\konser-modu`
+4. İndirdiğiniz `konser-modu` klasörünü seçin (içinde `manifest.json` bulunmalı)
 5. Araç çubuğundaki uzantı simgesine tıklayın. Simgeyi görmek için bulmaca
    düğmesinden **Konser Modu**nu sabitleyebilirsiniz.
 
