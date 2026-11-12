@@ -36,6 +36,12 @@ Bu eklenti aynı prensibi Web Audio API ile taklit eder:
 - Açık/koyu tema; ayarlar ve son durum hatırlanır
 - Kayıt yapılmaz, veri dışarı gönderilmez; yalnızca `activeTab` erişimi kullanılır
 
+## İndirme
+
+Hazır paket: [Releases](https://github.com/Aphelioxe/konser-modu/releases) sayfasından
+`konser-modu-1.0.0.zip` dosyasını indirip bir klasöre çıkarın, ardından aşağıdaki
+adımları izleyin.
+
 ## Kurulum
 
 1. Chrome'da `chrome://extensions` adresini açın.
